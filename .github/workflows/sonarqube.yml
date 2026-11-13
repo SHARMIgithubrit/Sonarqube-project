@@ -88,6 +88,21 @@ jobs:
             *) echo "Invalid URL format"; exit 1 ;;
           esac
 
+      - name: Validate SonarQube token
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          if [ -z "$SONAR_TOKEN" ]; then
+            echo "ERROR: Token is missing"
+            exit 1
+          fi
+
+          if [ "$SONAR_TOKEN" != "$(echo -n "$SONAR_TOKEN" | tr -d '[:space:]')" ]; then
+            echo "ERROR: Token contains whitespace"
+            exit 1
+          fi
+
+          echo "Token format validation passed" 
       # Step 5: Run SonarQube analysis
       - name: run sonarqube analysis
         uses: sonarsource/sonarqube-scan-action@v8.3.0
