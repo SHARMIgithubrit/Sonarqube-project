@@ -67,7 +67,7 @@ jobs:
             -Dsonar.exclusions=node_modules/**,coverage/**
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
         # step-6 sonarqube quality gate  
-      - name: sonarqube quality gate  
+      - name: sonarqube quality gates 
         uses: sonarsource/sonarqube-quality-gate-action@v1.2.0
         timeout-minutes: 5
         env:
