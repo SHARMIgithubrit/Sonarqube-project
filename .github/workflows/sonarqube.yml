@@ -70,8 +70,8 @@ jobs:
     
       - name: Verify SonarQube configuration
         env:
-          SONAR_HOST_URL: ${{ secrets.SONARQUBE_HOST_URL }}
-          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           if [ -z "$SONAR_HOST_URL" ]; then
             echo "SonarQube URL is missing"
@@ -92,8 +92,8 @@ jobs:
       - name: run sonarqube analysis
         uses: sonarsource/sonarqube-scan-action@v8.3.0
         env:
-          SONAR_HOST_URL: ${{ secrets.SONARQUBE_HOST_URL }}
-          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
             -Dsonar.projectKey=sonarqube-project1
@@ -110,5 +110,5 @@ jobs:
         uses: sonarsource/sonarqube-quality-gate-action@v1.2.0
         timeout-minutes: 5
         env:
-          SONAR_HOST_URL: ${{ secrets.SONARQUBE_HOST_URL }}
-          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
